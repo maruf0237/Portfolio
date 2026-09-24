@@ -874,6 +874,116 @@ section {
         .timeline-desc li {
             margin-bottom: 0.3rem;
         }
+ #education {
+            background: var(--bg2);
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .edu-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 2rem;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .edu-card:hover {
+            border-color: var(--accent2);
+            transform: translateY(-4px);
+        }
+
+        .edu-icon {
+            font-size: 1.5rem;
+            color: var(--accent2);
+            margin-bottom: 1rem;
+        }
+
+        .edu-degree {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-school {
+            font-size: 0.82rem;
+            color: var(--accent);
+            margin-bottom: 0.25rem;
+        }
+
+        .edu-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.54rem;
+            color: var(--muted);
+            margin-bottom: 1rem;
+        }
+
+        .edu-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        /* ── CERTIFICATIONS ── */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .cert-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .cert-card:hover {
+            border-color: var(--accent3);
+            transform: translateY(-3px);
+        }
+
+        .cert-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(57, 255, 20, 0.07);
+            border: 1px solid rgba(57, 255, 20, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent3);
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        .cert-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.68rem;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-issuer {
+            font-size: 0.72rem;
+            color: var(--accent3);
+            margin-bottom: 0.25rem;
+        }
+
+        .cert-year {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 0.54rem;
+            color: var(--muted);
+        }
+
 
 
 
