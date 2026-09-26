@@ -1,10 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     // Theme Toggle
-
     const themeToggle = document.getElementById("themeToggle");
     const themeIcon = document.getElementById("themeIcon");
 
-    // Load saved theme
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "light") {
@@ -48,7 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const targetId = this.getAttribute("href");
 
-            if (!targetId || targetId === "#") return;
+            if (!targetId || targetId === "#") {
+                return;
+            }
 
             const target = document.querySelector(targetId);
 
@@ -61,9 +61,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 });
             }
         });
-
     });
-
     // Active Navigation Link
 
     const sections = document.querySelectorAll("section[id]");
@@ -84,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
             ) {
                 currentSection = section.getAttribute("id");
             }
-
         });
 
         navLinks.forEach(link => {
@@ -96,13 +93,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (href === `#${currentSection}`) {
                 link.classList.add("active");
             }
-
         });
     }
 
     window.addEventListener("scroll", updateActiveNav);
 
     updateActiveNav();
+
+
     // Scroll Reveal Animation
 
     const revealElements =
@@ -121,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         observer.unobserve(entry.target);
                     }
-
                 });
-
             },
             {
                 threshold: 0.15
@@ -139,8 +135,8 @@ document.addEventListener("DOMContentLoaded", () => {
         revealElements.forEach(element => {
             element.classList.add("visible");
         });
-
     }
+
     // Typing Effect
 
     const typedText = document.getElementById("typed-text");
@@ -174,6 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     deleting = true;
 
                     setTimeout(typeEffect, 1500);
+
                     return;
                 }
 
@@ -192,6 +189,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         (textIndex + 1) % texts.length;
 
                     setTimeout(typeEffect, 300);
+
                     return;
                 }
             }
@@ -217,13 +215,10 @@ document.addEventListener("DOMContentLoaded", () => {
             } else {
                 backTop.classList.remove("visible");
             }
-
         });
-
     }
-
-
     // Contact Form
+
     const contactForm =
         document.getElementById("contactForm");
 
@@ -234,19 +229,20 @@ document.addEventListener("DOMContentLoaded", () => {
             e.preventDefault();
 
             const name =
-                document.getElementById("name");
+                contactForm.querySelector('[name="name"]');
 
             const email =
-                document.getElementById("email");
+                contactForm.querySelector('[name="email"]');
 
             const subject =
-                document.getElementById("subject");
+                contactForm.querySelector('[name="subject"]');
 
             const message =
-                document.getElementById("message");
+                contactForm.querySelector('[name="message"]');
 
 
             // Basic validation
+
             if (!name || !email || !subject || !message) {
                 return;
             }
@@ -257,12 +253,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 subject.value.trim() === "" ||
                 message.value.trim() === ""
             ) {
+
                 alert("Please fill in all fields.");
+
                 return;
             }
 
-
             // Email validation
+
             const emailPattern =
                 /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -275,18 +273,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
             // Success message
+
             alert(
                 "Thank you! Your message has been submitted successfully."
             );
 
             contactForm.reset();
-
         });
-
     }
-
     // Particle Background
-
+    
     const canvas =
         document.getElementById("particle-canvas");
 
@@ -296,11 +292,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let particles = [];
 
+
         function resizeCanvas() {
 
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
         }
 
         resizeCanvas();
@@ -309,9 +305,8 @@ document.addEventListener("DOMContentLoaded", () => {
             "resize",
             resizeCanvas
         );
-
-
         // Create particles
+
         function createParticles() {
 
             particles = [];
@@ -327,7 +322,9 @@ document.addEventListener("DOMContentLoaded", () => {
             for (let i = 0; i < particleCount; i++) {
 
                 particles.push({
+
                     x: Math.random() * canvas.width,
+
                     y: Math.random() * canvas.height,
 
                     size:
@@ -342,15 +339,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     opacity:
                         Math.random() * 0.5 + 0.2
                 });
-
             }
-
         }
 
         createParticles();
-
-
         // Animate particles
+
         function animateParticles() {
 
             ctx.clearRect(
@@ -360,6 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 canvas.height
             );
 
+
             particles.forEach(particle => {
 
                 particle.x += particle.speedX;
@@ -367,6 +362,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
                 // Wrap around screen
+
                 if (particle.x < 0) {
                     particle.x = canvas.width;
                 }
@@ -383,8 +379,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     particle.y = 0;
                 }
 
-
                 // Draw particle
+
                 ctx.beginPath();
 
                 ctx.arc(
@@ -399,11 +395,9 @@ document.addEventListener("DOMContentLoaded", () => {
                     `rgba(0, 255, 136, ${particle.opacity})`;
 
                 ctx.fill();
-
             });
-
-
             // Draw connections
+
             for (let i = 0; i < particles.length; i++) {
 
                 for (
@@ -424,6 +418,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         Math.sqrt(
                             dx * dx + dy * dy
                         );
+
 
                     if (distance < 120) {
 
@@ -449,11 +444,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         ctx.lineWidth = 0.5;
 
                         ctx.stroke();
-
                     }
-
                 }
-
             }
 
             requestAnimationFrame(
@@ -463,8 +455,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         animateParticles();
     }
-    // Current Year
 
+    // Current Year
     const currentYear =
         document.getElementById("currentYear");
 
@@ -472,7 +464,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         currentYear.textContent =
             new Date().getFullYear();
-
     }
 
 });
